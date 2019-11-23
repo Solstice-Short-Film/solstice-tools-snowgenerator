@@ -1,5 +1,4 @@
 # ===================================================================
 # artellapipe-tools-snowgenerator requirements file
 # ===================================================================
-
-artellapipe-core
+solstice

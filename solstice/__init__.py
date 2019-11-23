@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Initialization module for solstice-tools-snowgenerator
+Initialization module for solstice
 """
 
 from __future__ import print_function, division, absolute_import

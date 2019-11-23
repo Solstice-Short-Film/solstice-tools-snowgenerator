@@ -17,24 +17,15 @@ from Qt.QtWidgets import *
 import tpDccLib as tp
 
 import artellapipe
-from artellapipe.gui import window
 
 if tp.is_maya():
     import tpMayaLib as maya
 
 
-class ArtellaLightRigManager(window.ArtellaWindow, object):
+class ArtellaLightRigManager(artellapipe.Tool, object):
 
-    VERSION = '0.0.1'
-    LOGO_NAME = 'snowgenerator_logo'
-
-    def __init__(self, project):
-        super(ArtellaLightRigManager, self).__init__(
-            project=project,
-            name='SnowGeneratorWindow',
-            title='Snow Generator',
-            size=(100, 150)
-        )
+    def __init__(self, project, config):
+        super(ArtellaLightRigManager, self).__init__(project=project, config=config)
 
     def ui(self):
         super(ArtellaLightRigManager, self).ui()
@@ -48,7 +39,7 @@ class ArtellaLightRigManager(window.ArtellaWindow, object):
     @staticmethod
     def create_snow():
 
-        import pymel as pm
+        import pymel.core as pm
 
         selobj = maya.cmds.ls(sl=True)
         if len(selobj) <= 0:
@@ -73,7 +64,7 @@ class ArtellaLightRigManager(window.ArtellaWindow, object):
         max_param = 999999
         test_both_directions = False
         accel_params = None
-        sortHits = True
+        sort_hits = True
         hit_points = maya.OpenMaya.MFloatPointArray()
         hit_ray_params = maya.OpenMaya.MFloatArray()
         hit_faces = maya.OpenMaya.MIntArray()
@@ -101,21 +92,22 @@ class ArtellaLightRigManager(window.ArtellaWindow, object):
             ray_direction = maya.OpenMaya.MFloatVector(0, 0.25, 0)
             ray_source = maya.OpenMaya.MFloatPoint(center_point[0], center_point[1] + 0.1, center_point[2])
             hit_points.clear()
-            if obj_mfnMesh.allIntersections(ray_source,
-                                            ray_direction,
-                                            face_ids,
-                                            tri_ids,
-                                            ids_sorted,
-                                            space,
-                                            max_param,
-                                            test_both_directions,
-                                            accel_params,
-                                            sortHits,
-                                            hit_points,
-                                            hit_ray_params,
-                                            hit_faces,
-                                            None, None, None,
-                                            0.000001):
+            if obj_mfnMesh.allIntersections(
+                    ray_source,
+                    ray_direction,
+                    face_ids,
+                    tri_ids,
+                    ids_sorted,
+                    space,
+                    max_param,
+                    test_both_directions,
+                    accel_params,
+                    sort_hits,
+                    hit_points,
+                    hit_ray_params,
+                    hit_faces,
+                    None, None, None,
+                    0.000001):
                 maya.cmds.select(pselect, add=True)
         maya.cmds.selectMode(co=True)
         maya.cmds.delete()
@@ -134,10 +126,3 @@ class ArtellaLightRigManager(window.ArtellaWindow, object):
         maya.cmds.play()
 
         maya.mel.eval('doParticleToPoly;')
-
-
-def run():
-    win = ArtellaLightRigManager(project=artellapipe.solstice)
-    win.show()
-
-    return win
