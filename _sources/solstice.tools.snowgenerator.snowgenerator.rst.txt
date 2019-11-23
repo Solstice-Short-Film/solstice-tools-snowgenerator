@@ -1,0 +1,7 @@
+solstice.tools.snowgenerator.snowgenerator module
+=================================================
+
+.. automodule:: solstice.tools.snowgenerator.snowgenerator
+   :members:
+   :undoc-members:
+   :show-inheritance:
