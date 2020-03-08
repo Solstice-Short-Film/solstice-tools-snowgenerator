@@ -14,21 +14,21 @@ __email__ = "tpovedatd@gmail.com"
 
 from Qt.QtWidgets import *
 
-import tpDccLib as tp
+import tpDcc as tp
 
 import artellapipe
 
 if tp.is_maya():
-    import tpMayaLib as maya
+    import tpDcc.dccs.maya as maya
 
 
-class ArtellaLightRigManager(artellapipe.Tool, object):
+class SolsticeSnowGenerator(artellapipe.ToolWidget, object):
 
-    def __init__(self, project, config):
-        super(ArtellaLightRigManager, self).__init__(project=project, config=config)
+    def __init__(self, project, config, settings, parent):
+        super(SolsticeSnowGenerator, self).__init__(project=project, config=config, settings=settings, parent=parent)
 
     def ui(self):
-        super(ArtellaLightRigManager, self).ui()
+        super(SolsticeSnowGenerator, self).ui()
 
         create_snow_btn = QPushButton('Snow it!')
         create_snow_btn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
