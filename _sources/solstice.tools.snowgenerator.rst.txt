@@ -1,12 +1,13 @@
 solstice.tools.snowgenerator package
 ====================================
 
-Submodules
-----------
+Subpackages
+-----------
 
 .. toctree::
 
-   solstice.tools.snowgenerator.snowgenerator
+   solstice.tools.snowgenerator.core
+   solstice.tools.snowgenerator.widgets
 
 Module contents
 ---------------

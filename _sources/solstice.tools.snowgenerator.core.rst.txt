@@ -1,0 +1,17 @@
+solstice.tools.snowgenerator.core package
+=========================================
+
+Submodules
+----------
+
+.. toctree::
+
+   solstice.tools.snowgenerator.core.snowgenerator
+
+Module contents
+---------------
+
+.. automodule:: solstice.tools.snowgenerator.core
+   :members:
+   :undoc-members:
+   :show-inheritance:
